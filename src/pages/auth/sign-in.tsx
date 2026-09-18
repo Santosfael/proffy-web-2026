@@ -3,6 +3,8 @@ import { Check } from "lucide-react"
 import background from '../../assets/background.svg'
 import logo from '../../assets/logo.svg'
 import heart from '../../assets/heart.svg'
+import { Input } from "../../components/input"
+import { Button } from "../../components/button"
 
 export function SignIn() {
     return (
@@ -17,46 +19,47 @@ export function SignIn() {
                     <h1 className='text-3xl font-poppins-semibold text-text-title'>Fazer Login</h1>
 
                     <form action="">
-                    <input
-                        type='email'
-                        id='email'
-                        className='block w-full text-text-complement p-5 text-base bg-white-shape font-poppins-regular border-2 border-gray-lines-in-white rounded-t-lg'
-                        placeholder='E-mail'/>
+                        <Input
+                            type="email"
+                            id="email"
+                            placeholder="E-mail"
+                            rounded="top"
+                        />
 
-                        <input
-                        type='password'
-                        id='password'
-                        className='block w-full text-text-complement p-5 text-base bg-white-shape font-poppins-regular border-2 border-gray-lines-in-white rounded-b-lg'
-                        placeholder='Senha'/>
+                        <Input
+                            type="password"
+                            id="password"
+                            placeholder="E-mail"
+                            rounded="bottom"
+                        />
 
                         <div className='gap-4 flex flex-row mt-6 mb-10 justify-between'>
-                        <label htmlFor="checkbox-remember" className='flex items-center gap-2 cursor-pointer'>
-                            <span className='relative flex items-center justify-center'>
-                            <input
-                                type="checkbox"
-                                id='checkbox-remember'
-                                className='w-6 h-6 rounded-lg checked:bg-green bg-white appearance-none'
-                            />
-                            <Check className='absolute w-4 h-4 text-white checked:opacity-100' />
-                            </span>
-                            <span className='font-poppins-regular font-base text-text-complement'>
-                            Lembrar-me
-                            </span>
-                        </label>
+                            <label htmlFor="checkbox-remember" className='flex items-center gap-2 cursor-pointer'>
+                                <span className='relative flex items-center justify-center'>
+                                <input
+                                    type="checkbox"
+                                    id='checkbox-remember'
+                                    className='w-6 h-6 rounded-lg checked:bg-green bg-white appearance-none'
+                                />
+                                <Check className='absolute w-4 h-4 text-white checked:opacity-100' />
+                                </span>
+                                <span className='font-poppins-regular font-base text-text-complement'>
+                                Lembrar-me
+                                </span>
+                            </label>
 
-                        <button
-                            type='button'
-                            className='font-poppins-regular font-base text-text-complement cursor-pointer'
-                        >
-                            Esqueci minha senha
-                        </button>
+                            <button
+                                type='button'
+                                className='font-poppins-regular font-base text-text-complement cursor-pointer'
+                            >
+                                Esqueci minha senha
+                            </button>
                         </div>
-                        <button
-                        type='submit'
-                        className='w-full bg-green p-5 border-none font-archivo-semibold text-white-shape rounded-lg cursor-pointer'
-                        >
-                        Entrar
-                        </button>
+                        <Button
+                            type="submit"
+                            disabled={false}
+                            title="Entrar"
+                        />
                     </form>
                 </div>
 
