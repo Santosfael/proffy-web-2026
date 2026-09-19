@@ -9,7 +9,12 @@ export function Button({ type = "button", title, disabled }: ButtonProps) {
         <button
         type={type}
         disabled={disabled}
-        className='w-full bg-green p-5 border-none font-archivo-semibold text-white-shape rounded-lg cursor-pointer'
+        className={`w-full p-5 border-none rounded-lg font-archivo-semibold mt-10
+            ${disabled
+                ? "bg-gray-shape text-text-complement cursor-not-allowed"
+                : "bg-green opacity-90 hover:bg-green hover:opacity-100 transition text-white cursor-pointer"
+            }
+        `}
         >
             {title}
         </button>

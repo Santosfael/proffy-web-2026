@@ -1,12 +1,48 @@
 import { Check } from "lucide-react"
+import { z } from 'zod'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 
 import background from '../../assets/background.svg'
 import logo from '../../assets/logo.svg'
 import heart from '../../assets/heart.svg'
 import { Input } from "../../components/input"
 import { Button } from "../../components/button"
+import { toast } from "sonner"
+
+const sigInForm = z.object({
+    email: z.email("E-mail inválido"),
+    password: z.string().min(6, "A senha deve conter pelo menos 6 caracteres"),
+})
+
+type SignInForm = z.infer<typeof sigInForm>
 
 export function SignIn() {
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: {
+            isSubmitting,
+            errors,
+            isValid
+        }
+    } = useForm<SignInForm>({
+        resolver: zodResolver(sigInForm),
+        mode: "onChange"
+    })
+
+    async function handleSignIn(data: SignInForm) {
+        try {
+            console.log(data)
+            await new Promise((resolver) => setTimeout(resolver, 2000))
+            toast.success("Credenciais válidas")
+        } catch {
+            toast.error("Credenciais inválidas")
+        }
+        reset()
+    }
+
     return (
         <div className="grid min-h-screen grid-cols-5 antialiased">
             <div className="bg-purple flex items-center justify-center col-span-3 relative">
@@ -18,19 +54,23 @@ export function SignIn() {
                 <div className='w-[352px] flex flex-col justify-center gap-6'>
                     <h1 className='text-3xl font-poppins-semibold text-text-title'>Fazer Login</h1>
 
-                    <form action="">
+                    <form onSubmit={handleSubmit(handleSignIn)}>
                         <Input
                             type="email"
                             id="email"
                             placeholder="E-mail"
                             rounded="top"
+                            register={register}
+                            error={errors.email}
                         />
 
                         <Input
                             type="password"
                             id="password"
-                            placeholder="E-mail"
+                            placeholder="Senha"
                             rounded="bottom"
+                            register={register}
+                            error={errors.password}
                         />
 
                         <div className='gap-4 flex flex-row mt-6 mb-10 justify-between'>
@@ -57,7 +97,7 @@ export function SignIn() {
                         </div>
                         <Button
                             type="submit"
-                            disabled={false}
+                            disabled={isSubmitting || !isValid}
                             title="Entrar"
                         />
                     </form>
