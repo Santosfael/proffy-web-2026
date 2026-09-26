@@ -3,12 +3,12 @@ import { z } from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import background from '../../assets/background.svg'
-import logo from '../../assets/logo.svg'
 import heart from '../../assets/heart.svg'
 import { Input } from "../../components/input"
 import { Button } from "../../components/button"
 import { toast } from "sonner"
+import { BackgroundIntro } from "../../components/backgroundIntro"
+import { Link } from "react-router"
 
 const sigInForm = z.object({
     email: z.email("E-mail inválido"),
@@ -45,10 +45,8 @@ export function SignIn() {
 
     return (
         <div className="grid min-h-screen grid-cols-5 antialiased">
-            <div className="bg-purple flex items-center justify-center col-span-3 relative">
-                <img src={background} alt="background image" className="absolute" />
-                <img src={logo} alt="Imagem Com texto Proffy" className="absolute"/>
-            </div>
+            <BackgroundIntro />
+
             <div className="bg-background col-span-2 flex flex-col h-full items-center justify-center">
                 <div className='p-8'>
                 <div className='w-[352px] flex flex-col justify-center gap-6'>
@@ -105,16 +103,16 @@ export function SignIn() {
 
                 <footer className='mt-30 w-full'>
                     <div className='flex flex-row justify-between'>
-                    <div className='flex flex-col'>
-                        <p className='font-poppins-regular text-text-complement'>Não tem conta?</p>
-                        <button type='button' className='font-poppins-semibold text-left underline text-purple'>
-                        Cadastre-se
-                        </button>
-                    </div>
-                    <div className='flex flex-row gap-2 items-center'>
-                        <p className='font-poppins-regular text-text-complement'>É de graça</p>
-                        <img src={heart} alt="caração roxo" className='w-4' />
-                    </div>
+                        <div className='flex flex-col'>
+                            <p className='font-poppins-regular text-text-complement'>Não tem conta?</p>
+                            <button type='button' className='font-poppins-semibold text-left underline text-purple cursor-pointer'>
+                                <Link to={"/sign-up"}>Cadastre-se</Link>
+                            </button>
+                        </div>
+                        <div className='flex flex-row gap-2 items-center'>
+                            <p className='font-poppins-regular text-text-complement'>É de graça</p>
+                            <img src={heart} alt="caração roxo" className='w-4' />
+                        </div>
                     </div>
                 </footer>
                 </div>
