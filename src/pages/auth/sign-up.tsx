@@ -10,8 +10,8 @@ import { useNavigate } from "react-router"
 import goBack from '../../assets/goback.svg'
 
 const signUpForm = z.object({
-    name: z.string().min(6, "Digite um válido"),
-    lastName: z.string().min(6, "Digite um sobrenome válido"),
+    name: z.string().min(3, "Digite um válido"),
+    lastName: z.string().min(3, "Digite um sobrenome válido"),
     email: z.email("E-mail inválido"),
     password: z.string().min(6, "A senha deve conter pelo menos 6 caracteres")
 })
