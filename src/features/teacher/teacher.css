@@ -1,0 +1,70 @@
+.teacher-page { min-height:100vh; background:#f0f0f7; color:#6a6180; font-family:PoppinsRegular,sans-serif; padding-bottom:64px }
+.teacher-header { background:#7957e0; border-bottom:1px solid #ffffff20; color:#d4c2ff }
+.teacher-header nav { max-width:1120px; margin:auto; height:76px; display:flex; align-items:center; justify-content:space-between; padding:0 24px; font-size:14px }
+.teacher-header a { display:flex; align-items:center; padding:8px }
+.teacher-header img { width:76px; max-height:32px }
+.teacher-hero { background:#7957e0; padding:48px 24px 100px }
+.teacher-intro { max-width:736px; margin:auto; display:flex; justify-content:space-between; align-items:center; gap:32px }
+.teacher-page h1 { font-family:ArchivoBold,sans-serif; font-size:36px; line-height:1.2; color:white }
+.teacher-intro p { margin-top:24px; color:#e0d4ff; font-size:16px; line-height:1.7 }
+.teacher-intro .intro-aside { display:flex; gap:16px; align-items:center; font-size:12px }
+.intro-aside svg { width:36px; height:36px; color:#bca5ff }
+.teacher-card { max-width:736px; margin:-48px auto 0; position:relative; border:1px solid #e6e6f0; border-radius:8px; background:white; overflow:hidden; box-shadow:0 4px 20px #32264d05 }
+.teacher-card-body { padding:56px 64px 40px }
+.teacher-section { border:0; margin:0 0 48px; padding:0; position:relative; min-width:0 }
+.teacher-section:last-child { margin-bottom:0 }
+.teacher-section legend { display:block; width:100%; padding:0 0 16px; border-bottom:1px solid #e6e6f0; font:24px ArchivoSemiBold,sans-serif; color:#32264d }
+.section-content { display:grid; gap:24px; padding-top:24px }
+.section-action { position:absolute; right:0; top:-42px }
+.add-schedule { color:#7957e0; font:16px ArchivoSemiBold,sans-serif; cursor:pointer }
+.teacher-field { min-width:0 }
+.teacher-field label { display:block; font-size:14px; margin-bottom:8px }
+.teacher-field input,.teacher-field select,.teacher-field textarea { display:block; width:100%; border:1px solid #e6e6f0; background:#fafafc; border-radius:8px; padding:16px; min-height:56px; color:#6a6180; font:14px PoppinsRegular,sans-serif }
+.teacher-field textarea { resize:vertical }
+.teacher-field :is(input,select,textarea):focus { outline:2px solid #7957e0; outline-offset:2px }
+.teacher-field [aria-invalid=true] { border-color:#c53050 }
+.teacher-page button:focus-visible,.teacher-page a:focus-visible { outline:3px solid #7957e0; outline-offset:4px }
+.teacher-header a:focus-visible { outline-color:white }
+.teacher-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px }
+.registration-identity { display:flex; align-items:center; gap:24px; color:#32264d; font:24px ArchivoSemiBold,sans-serif }
+.registration-identity img { width:80px; height:80px; border-radius:50%; object-fit:cover }
+.bio-count { display:block; text-align:right; font-size:12px; margin-top:8px; color:#9c98a6 }
+.currency-field { position:relative }
+.currency-field span { position:absolute; top:18px; left:16px; font-size:14px }
+.currency-field input { padding-left:46px }
+.schedule-grid { display:grid; grid-template-columns:2fr 1fr 1fr; gap:16px }
+.schedule-block + .schedule-block { border-top:1px solid #e6e6f0; padding-top:24px }
+.remove-schedule { display:block; color:#c53050; font-size:12px; margin:20px auto 0; cursor:pointer }
+.field-error { color:#c53050; font-size:12px; margin-top:8px }
+.teacher-footer { padding:32px 64px; border-top:1px solid #e6e6f0; background:#fafafc; display:flex; align-items:center; justify-content:space-between; gap:24px }
+.teacher-footer p { display:flex; align-items:center; gap:16px; font-size:11px; line-height:1.7 }
+.teacher-footer p svg { color:#7957e0; flex-shrink:0 }
+.teacher-footer strong { color:#7957e0 }
+.teacher-footer button { width:200px; margin:0; flex-shrink:0; background:#04d361 }
+.profile-identity { text-align:center }
+.profile-avatar { width:140px; height:140px; position:relative; margin:0 auto 24px }
+.profile-avatar > img { width:100%; height:100%; object-fit:cover; border-radius:50% }
+.profile-avatar span { position:absolute; bottom:0; right:0; display:grid; place-items:center; width:42px; height:42px; background:#04d361; color:white; border-radius:50%; border:3px solid #7957e0 }
+.profile-identity p { color:#e0d4ff; margin-top:12px }
+.teacher-success > div { background:#7957e0; overflow:hidden; padding:32px 24px }
+.teacher-success > div > img { max-width:none; pointer-events:none }
+.teacher-success > div > div { position:relative; max-width:560px; text-align:center }
+.teacher-success h1 { font-size:54px; line-height:1.2 }
+.teacher-success p { max-width:460px; line-height:1.7 }
+.teacher-success button { background:#04d361; min-width:176px }
+@media(max-width:640px) {
+ .teacher-hero { padding:32px 24px 80px }
+ .teacher-page h1 { font-size:28px }
+ .teacher-intro { display:block }
+ .teacher-intro .intro-aside { margin-top:24px }
+ .teacher-card { margin:-40px 16px 0 }
+ .teacher-card-body { padding:32px 20px }
+ .teacher-grid { grid-template-columns:1fr }
+ .teacher-section legend { font-size:21px }
+ .section-action { position:static; margin-top:16px }
+ .schedule-grid { grid-template-columns:1fr 1fr; gap:16px 12px }
+ .schedule-grid > :first-child { grid-column:1/-1 }
+ .teacher-footer { padding:24px 20px; flex-direction:column; align-items:stretch }
+ .teacher-footer button { width:100% }
+ .teacher-success h1 { font-size:36px }
+}

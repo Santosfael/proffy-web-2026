@@ -1,3 +1,4 @@
+import { TeacherRegistration, TeacherProfile, TeacherSaved } from './features/teacher/pages'
 import { createBrowserRouter } from 'react-router'
 import { SignIn } from './pages/auth/sign-in'
 import { SignUp } from './pages/auth/sign-up'
@@ -10,5 +11,8 @@ export const router = createBrowserRouter([
     { path: '/sign-up', element: <SignUp /> },
     { path: '/sign-up/finally-register', element: <FinallyRegister /> },
     { path: '/', element: <Home /> },
-    { path: '/study', element: <TeacherList />}
+    { path: '/study', element: <TeacherList />},
+    { path: '/give-classes', element: <TeacherRegistration /> },
+    { path: '/give-classes/success', element: <TeacherSaved /> },
+    { path: '/profile', element: <TeacherProfile /> }
 ])
