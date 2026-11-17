@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import { useNavigate } from 'react-router'
 import backgroundFinally from '../assets/background-finaly.svg'
 import done from '../assets/done.svg'
@@ -5,12 +6,19 @@ import { Button } from './button'
 
 type FinallyProps = {
     title: string
-    subtitle: string
+    subtitle: ReactNode
     titleButton: string
     path?: string
+    buttonClassName?: string
 }
 
-export function Finally({title, subtitle, titleButton, path = ""}: FinallyProps) {
+export function Finally({
+    title,
+    subtitle,
+    titleButton,
+    path = "",
+    buttonClassName,
+}: FinallyProps) {
     const navigate = useNavigate()
     function handleFinally() {
         navigate(path)
@@ -23,7 +31,7 @@ export function Finally({title, subtitle, titleButton, path = ""}: FinallyProps)
                 <h1 className='font-archivo-bold text-white text-6xl mt-10'>
                     {title}
                 </h1>
-                <p className='font-poppins-regular text-base text-text-purple-base mt-6 text-center'>
+                <p className='font-poppins-regular text-base text-text-purple-base mt-6 text-center whitespace-pre-line'>
                     {subtitle}
                 </p>
 
@@ -33,6 +41,7 @@ export function Finally({title, subtitle, titleButton, path = ""}: FinallyProps)
                         type='button'
                         disabled={false}
                         onClick={handleFinally}
+                        className={buttonClassName}
                     />
                 </div>
             </div>

@@ -44,9 +44,10 @@ export function Select({
             <div className="relative w-full">
                 <select
                     id={name}
+                    defaultValue=""
                     {...rest}
                     {...(register ? register(name) : {})}
-                    className= {`
+                    className={`
                         w-full h-14
                         ${bgColor}
                         rounded-lg
@@ -57,7 +58,7 @@ export function Select({
                         pr-10
                         font-poppins-regular
                         text-base
-                        text-text-input
+                        text-text-base
                         ${error ? "border-red-500" : "border-gray-lines-in-white"}
                         border
                         appearance-none
@@ -66,7 +67,6 @@ export function Select({
                     <option
                         value=""
                         disabled
-                        selected
                         hidden
                         className="font-poppins-regular text-base text-text-input"
                     >

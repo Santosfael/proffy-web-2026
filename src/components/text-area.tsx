@@ -12,7 +12,6 @@ interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
     error?: unknown
 }
 
-
 export function TextArea({
     name,
     label,
@@ -21,13 +20,13 @@ export function TextArea({
     spanLabel,
     register,
     error,
-    ...rest }: TextAreaProps) {
-
+    ...rest
+}: TextAreaProps) {
     return (
         <>
             <label
                 htmlFor={name}
-                className= {`font-poppins-regular ${labelColor} text-sm/loose mb-2`}
+                className={`font-poppins-regular ${labelColor} text-sm/loose mb-2`}
             >
                 {label}
                 {spanLabel &&
@@ -36,12 +35,12 @@ export function TextArea({
             </label>
 
             <div className="relative w-full">
-            <textarea
-                id={name}
-                {...(register ? register(name) : {})}
-                { ...rest }
-                className={
-                        `peer
+                <textarea
+                    id={name}
+                    {...rest}
+                    {...(register ? register(name) : {})}
+                    className={`
+                        peer
                         w-full
                         ${bgColor}
                         rounded-lg
@@ -49,17 +48,17 @@ export function TextArea({
                         ps-6
                         font-poppins-regular
                         text-base
+                        text-text-base
                         placeholder:text-text-input
                         ${error ? "border-red-500" : "border-gray-lines-in-white"}
-                        border-1
+                        border
                         resize-y
                         min-h-[160px]
-                        pt-5`
-                    }
-            />
-            <span className="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-[90%] h-[2px] bg-purple scale-x-0 transition-transform duration-300 peer-focus:scale-x-100"></span>
+                        pt-5
+                    `}
+                />
+                <span className="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-[90%] h-[2px] bg-purple scale-x-0 transition-transform duration-300 peer-focus:scale-x-100"></span>
             </div>
         </>
-        
     )
 }
