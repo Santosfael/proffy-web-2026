@@ -1,4 +1,4 @@
-import type { InputHTMLAttributes } from "react";
+import type { ChangeEvent, InputHTMLAttributes } from "react"
 
 interface InputCustomProps extends InputHTMLAttributes<HTMLInputElement> {
     name: string
@@ -9,6 +9,8 @@ interface InputCustomProps extends InputHTMLAttributes<HTMLInputElement> {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     register?: any
     error?: unknown
+    mask?: (value: string) => string
+    prefix?: string
 }
 
 export function InputCustom({
@@ -19,8 +21,20 @@ export function InputCustom({
     spanLabel,
     register,
     error,
+    mask,
+    prefix,
     ...rest
 }: InputCustomProps) {
+    const registered = register ? register(name) : {}
+
+    function handleChange(event: ChangeEvent<HTMLInputElement>) {
+        if (mask) {
+            event.target.value = mask(event.target.value)
+        }
+        registered.onChange?.(event)
+        rest.onChange?.(event)
+    }
+
     return (
         <>
             <label
@@ -34,20 +48,27 @@ export function InputCustom({
                 }
             </label>
             <div className="relative w-full">
+                {prefix && (
+                    <span className="absolute left-6 top-1/2 -translate-y-1/2 font-poppins-regular text-base text-text-complement pointer-events-none">
+                        {prefix}
+                    </span>
+                )}
                 <input
                     id={ name }
-                    {...(register ? register(name) : {})}
                     {...rest}
+                    {...registered}
+                    onChange={handleChange}
                     className={`
                         peer
                         w-full h-[56px]
                         ${bgColor}
                         rounded-lg
                         focus:outline-hidden
-                        ps-6
+                        ${prefix ? "ps-12" : "ps-6"}
                         font-poppins-regular
                         text-base
-                        text-text-input
+                        text-text-base
+                        placeholder:text-text-input
                         ${error ? "border-red-500" : "border-gray-lines-in-white"}
                         border
                         pr-2
